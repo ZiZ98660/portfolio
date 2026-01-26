@@ -1,0 +1,28 @@
+{
+  "name": "portfolio-fullstack",
+  "version": "1.0.0",
+  "description": "Full-stack portfolio project with Next.js frontend and Flask backend",
+  "private": true,
+  "scripts": {
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:admin": "cd admin && npm run dev",
+    "dev:backend": "cd backend && source venv/bin/activate && python app.py",
+    "build:frontend": "cd frontend && npm run build",
+    "build:admin": "cd admin && npm run build",
+    "install:frontend": "cd frontend && npm install",
+    "install:admin": "cd admin && npm install",
+    "install:all": "npm run install:frontend && npm run install:admin",
+    "install:backend": "cd backend && pip install -r requirements.txt"
+  },
+  "keywords": [
+    "portfolio",
+    "nextjs",
+    "flask",
+    "3d",
+    "animation",
+    "fullstack"
+  ],
+  "author": "",
+  "license": "ISC"
+}
+
