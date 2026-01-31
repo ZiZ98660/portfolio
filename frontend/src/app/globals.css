@@ -1,8 +1,24 @@
 @import "tailwindcss";
 
+
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;  /* Light blue-gray background */
+  --foreground: #0f172a;  /* Dark blue-gray text */
+  --primary: #0ea5e9;    /* Medical blue */
+  --primary-light: #e0f2fe;
+  --accent: #06b6d4;     /* Cyan for highlights */
+  --border: #e2e8f0;
+}
+ 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a;
+    --foreground: #f1f5f9;
+    --primary: #0ea5e9;
+    --accent: #06b6d4;
+    --border: #334155;
+  }
 }
 
 @theme inline {
@@ -13,12 +29,6 @@
   --font-accent: var(--font-outfit);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
   background: var(--background);
@@ -136,3 +146,13 @@ p, span, li, label, input, textarea, button, a {
 .animate-float-slow {
   animation: float-slow 30s ease-in-out infinite;
 }
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+

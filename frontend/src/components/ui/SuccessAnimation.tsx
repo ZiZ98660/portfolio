@@ -109,7 +109,7 @@ export default function SuccessAnimation({
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
-                  className="absolute inset-0 bg-gradient-to-br from-violet-500/40 via-purple-500/40 to-fuchsia-500/40 rounded-full blur-2xl -z-10"
+                  className="absolute inset-0 bg-gradient-to-br from-sky-500/40 via-cyan-500/40 to-blue-500/40 rounded-full blur-2xl -z-10"
                 />
                 
                 {/* Additional depth layer */}
@@ -124,7 +124,7 @@ export default function SuccessAnimation({
                     ease: "easeInOut",
                     delay: 0.5
                   }}
-                  className="absolute inset-0 bg-gradient-to-br from-blue-500/30 via-purple-500/30 to-pink-500/30 rounded-full blur-3xl -z-20"
+                  className="absolute inset-0 bg-gradient-to-br from-sky-500/30 via-cyan-500/30 to-blue-500/30 rounded-full blur-3xl -z-20"
                 />
               </motion.div>
             </motion.div>

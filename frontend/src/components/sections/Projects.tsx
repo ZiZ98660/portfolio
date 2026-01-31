@@ -78,11 +78,11 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="font-heading text-2xl sm:text-3xl md:text-[1.75rem] lg:text-[2rem] font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-[1.75rem] lg:text-[2rem] font-bold mb-4 bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent">
             My Projects
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto mb-8"></div>
-          <p className="font-body text-gray-300 text-sm sm:text-base max-w-2xl mx-auto">
+          <div className="w-24 h-1 bg-gradient-to-r from-sky-500 to-blue-600 mx-auto mb-8"></div>
+          <p className="font-body text-slate-600 text-sm sm:text-base max-w-2xl mx-auto">
             Explore my latest work and creative solutions
           </p>
         </motion.div>
@@ -100,8 +100,8 @@ export default function Projects() {
               onClick={() => setSelectedCategory(category)}
               className={`px-3 py-1.5 sm:px-6 sm:py-2 rounded-full text-sm sm:text-base font-semibold transition-all ${
                 selectedCategory === category
-                  ? 'bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 text-white shadow-lg shadow-purple-500/50'
-                  : 'bg-white/10 backdrop-blur-md text-gray-300 border border-white/20 hover:bg-white/20'
+                  ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-lg shadow-sky-500/30'
+                  : 'bg-white/70 backdrop-blur-md text-slate-700 border border-sky-200/60 hover:bg-white hover:border-sky-400/60 shadow-sm shadow-slate-900/5'
               }`}
             >
               {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -112,7 +112,7 @@ export default function Projects() {
         {/* Projects Grid */}
         {isLoading ? (
           <div className="text-center py-20">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"></div>
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-sky-500"></div>
           </div>
         ) : filteredProjects.length === 0 ? (
           <div className="text-center py-20 text-gray-400">
@@ -128,7 +128,7 @@ export default function Projects() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
-                className="group bg-white/10 backdrop-blur-md rounded-lg overflow-hidden border border-white/20 hover:border-purple-500/50 transition-all"
+                className="group bg-white/70 backdrop-blur-md rounded-lg overflow-hidden border border-sky-200/60 hover:border-sky-400/70 shadow-lg shadow-slate-900/5 transition-all"
               >
                 {project.thumbnail_image && (
                   <div className="relative h-48 overflow-hidden">
@@ -140,15 +140,15 @@ export default function Projects() {
                       unoptimized
                     />
                     {project.featured && (
-                      <div className="absolute top-4 right-4 px-3 py-1 bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 rounded-full text-xs sm:text-sm font-semibold">
+                      <div className="absolute top-4 right-4 px-3 py-1 bg-gradient-to-r from-sky-500 to-blue-600 rounded-full text-xs sm:text-sm font-semibold">
                         ⭐ Featured
                       </div>
                     )}
                   </div>
                 )}
                 <div className="p-6">
-                  <h3 className="font-heading text-base sm:text-lg md:text-[1.125rem] font-bold mb-2 text-white">{project.title}</h3>
-                  <p className="font-body text-gray-300 text-sm sm:text-base mb-4 line-clamp-2">
+                  <h3 className="font-heading text-base sm:text-lg md:text-[1.125rem] font-bold mb-2 text-slate-900">{project.title}</h3>
+                  <p className="font-body text-slate-600 text-sm sm:text-base mb-4 line-clamp-2">
                     {project.short_description || project.description}
                   </p>
                   {project.technologies && project.technologies.length > 0 && (
@@ -156,7 +156,7 @@ export default function Projects() {
                       {project.technologies.slice(0, 3).map((tech) => (
                         <span
                           key={tech}
-                          className="font-body px-2 py-1 bg-white/5 rounded text-xs sm:text-sm text-gray-400"
+                          className="font-body px-2 py-1 bg-sky-50 rounded text-xs sm:text-sm text-slate-700 border border-sky-200/60"
                         >
                           {tech}
                         </span>
@@ -169,7 +169,7 @@ export default function Projects() {
                         href={project.live_link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-accent px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 text-white rounded-lg text-sm sm:text-base font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all"
+                        className="font-accent px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-sky-500 to-blue-600 text-white rounded-lg text-sm sm:text-base font-semibold hover:shadow-lg hover:shadow-sky-500/30 transition-all"
                       >
                         Live Demo
                       </a>
@@ -179,7 +179,7 @@ export default function Projects() {
                         href={project.github_link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-body px-3 py-1.5 sm:px-4 sm:py-2 bg-white/10 text-white rounded-lg text-sm sm:text-base font-semibold hover:bg-white/20 transition-all"
+                        className="font-body px-3 py-1.5 sm:px-4 sm:py-2 bg-white rounded-lg text-sm sm:text-base font-semibold border border-sky-200/60 text-slate-700 hover:border-sky-400/60 hover:bg-sky-50 transition-all"
                       >
                         GitHub
                       </a>
@@ -196,7 +196,7 @@ export default function Projects() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 backdrop-blur-md rounded-lg border border-purple-500/30 p-8"
+          className="bg-gradient-to-r from-sky-600/15 to-blue-600/15 backdrop-blur-md rounded-lg border border-sky-400/30 p-8"
         >
           <div className="max-w-2xl mx-auto text-center">
             <AnimatePresence mode="wait">
@@ -208,10 +208,10 @@ export default function Projects() {
                   exit={{ opacity: 0, y: -20 }}
                   className="w-full"
                 >
-                  <h3 className="font-heading text-lg sm:text-xl md:text-[1.25rem] font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  <h3 className="font-heading text-lg sm:text-xl md:text-[1.25rem] font-bold mb-4 bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
                     Stay Updated with New Projects
                   </h3>
-                  <p className="font-body text-sm sm:text-base text-gray-300 mb-6">
+                  <p className="font-body text-sm sm:text-base text-slate-600 mb-6">
                     Subscribe to get notified when I publish new projects and updates
                   </p>
                   <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
@@ -222,12 +222,12 @@ export default function Projects() {
                       placeholder="Enter your email"
                       required
                       disabled={subscriptionStatus === 'loading'}
-                      className="flex-1 px-4 py-3 text-sm sm:text-base bg-white/10 backdrop-blur-md border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 disabled:opacity-50"
+                      className="flex-1 px-4 py-3 text-sm sm:text-base bg-white/80 backdrop-blur-md border border-sky-200/60 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-400 disabled:opacity-50"
                     />
                     <button
                       type="submit"
                       disabled={subscriptionStatus === 'loading'}
-                      className="font-accent px-4 py-2.5 sm:px-6 sm:py-3 bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 text-white rounded-lg text-sm sm:text-base font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all disabled:opacity-70 flex items-center justify-center gap-2 min-w-[120px]"
+                      className="font-accent px-4 py-2.5 sm:px-6 sm:py-3 bg-gradient-to-r from-sky-500 to-blue-600 text-white rounded-lg text-sm sm:text-base font-semibold hover:shadow-lg hover:shadow-sky-500/30 transition-all disabled:opacity-70 flex items-center justify-center gap-2 min-w-[120px]"
                     >
                       {subscriptionStatus === 'loading' ? (
                         <>

@@ -38,8 +38,8 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Ademola Adesina - Software Engineer with a vision to specialize in blockchain",
-  description: "Building scalable backend systems and AI-driven solutions",
+  title: "Sadiq Abdulazeez Adesina - Frontend Developer · Health-tech & SaaS",
+  description: "Frontend Developer with 2+ years building fast, scalable, user-focused web applications using React, Next.js, TypeScript. Licensed Pharmacist. Digital health, patient-centric interfaces, clinical usability.",
   other: {
     'cache-control': 'no-cache, no-store, must-revalidate',
     'pragma': 'no-cache',

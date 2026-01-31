@@ -25,14 +25,14 @@ const services = [
     title: 'Mobile Development',
     description: 'Native and cross-platform mobile applications for iOS and Android',
     features: ['Cross-Platform', 'Native Performance', 'App Store Ready'],
-    color: 'from-purple-400 to-pink-400',
+    color: 'from-sky-500 to-cyan-500',
   },
   {
     icon: faPalette,
     title: 'UI/UX Design',
     description: 'Beautiful and intuitive user interfaces that enhance user experience',
     features: ['User Research', 'Prototyping', 'Design Systems'],
-    color: 'from-pink-400 to-rose-400',
+    color: 'from-cyan-500 to-blue-600',
   },
   {
     icon: faServer,
@@ -53,7 +53,7 @@ const services = [
     title: 'Consulting',
     description: 'Technical consulting and architecture guidance for your projects',
     features: ['Technical Review', 'Architecture Planning', 'Code Review'],
-    color: 'from-indigo-400 to-purple-400',
+    color: 'from-sky-400 to-blue-600',
   },
 ];
 
@@ -68,10 +68,10 @@ export default function Services() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="font-heading text-2xl sm:text-3xl md:text-[1.75rem] lg:text-[2rem] font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-[1.75rem] lg:text-[2rem] font-bold mb-4 bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent">
             Services
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-sky-500 to-blue-600 mx-auto"></div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -83,17 +83,17 @@ export default function Services() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ y: -10, scale: 1.02 }}
-              className="p-6 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 hover:border-purple-500/50 transition-all group"
+              className="p-6 bg-white/70 backdrop-blur-md rounded-lg border border-sky-200/60 hover:border-sky-400/70 shadow-lg shadow-slate-900/5 transition-all group"
             >
               <div className={`p-4 bg-gradient-to-r ${service.color} rounded-lg w-fit mb-4 group-hover:scale-110 transition-transform`}>
                 <FontAwesomeIcon icon={service.icon} className="text-white text-xl sm:text-2xl" />
               </div>
-              <h3 className="font-heading text-base sm:text-lg md:text-[1.125rem] font-bold mb-3 text-white">{service.title}</h3>
-              <p className="font-body text-gray-300 mb-4 text-sm sm:text-base">{service.description}</p>
+              <h3 className="font-heading text-base sm:text-lg md:text-[1.125rem] font-bold mb-3 text-slate-900">{service.title}</h3>
+              <p className="font-body text-slate-600 mb-4 text-sm sm:text-base">{service.description}</p>
               <ul className="space-y-2">
                 {service.features.map((feature) => (
-                  <li key={feature} className="font-body text-sm sm:text-base text-gray-400 flex items-center">
-                    <FontAwesomeIcon icon={faCheckCircle} className="text-purple-400 mr-2 text-xs sm:text-sm" />
+                  <li key={feature} className="font-body text-sm sm:text-base text-slate-600 flex items-center">
+                    <FontAwesomeIcon icon={faCheckCircle} className="text-sky-500 mr-2 text-xs sm:text-sm" />
                     {feature}
                   </li>
                 ))}

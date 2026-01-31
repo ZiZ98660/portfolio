@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
@@ -47,11 +48,11 @@ export default function ProjectsBento() {
 
   return (
     <section id="projects" className="py-20 px-4 relative overflow-hidden">
-      {/* Section-specific glowing background - Purple/Pink theme */}
+      {/* Section-specific glowing background - Sky/Blue theme */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-1/3 left-0 w-[900px] h-[900px] bg-gradient-to-br from-purple-500/30 via-pink-500/25 to-transparent rounded-full blur-[160px] animate-glow-pulse"></div>
-        <div className="absolute bottom-1/3 right-0 w-[700px] h-[700px] bg-gradient-to-br from-pink-500/25 via-rose-500/20 to-transparent rounded-full blur-[140px] animate-glow-pulse-delayed"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-violet-500/20 rounded-full blur-[120px] animate-float-slow"></div>
+        <div className="absolute top-1/3 left-0 w-[900px] h-[900px] bg-gradient-to-br from-sky-400/15 via-cyan-400/10 to-blue-400/5 rounded-full blur-[160px] animate-glow-pulse"></div>
+        <div className="absolute bottom-1/3 right-0 w-[700px] h-[700px] bg-gradient-to-br from-cyan-400/12 via-blue-400/8 to-sky-400/5 rounded-full blur-[140px] animate-glow-pulse-delayed"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-[120px] animate-float-slow"></div>
       </div>
       
       <div className="max-w-7xl mx-auto relative z-10">
@@ -62,10 +63,10 @@ export default function ProjectsBento() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-              <h2 className="font-heading text-2xl sm:text-3xl md:text-[1.75rem] lg:text-[2rem] font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <h2 className="font-heading text-2xl sm:text-3xl md:text-[1.75rem] lg:text-[2rem] font-bold mb-4 bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent">
                 Featured Projects
               </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-sky-500 to-blue-600 mx-auto"></div>
           <p className="text-gray-400 mt-4 text-sm sm:text-base">Innovative solutions that make a difference</p>
         </motion.div>
 
@@ -83,7 +84,7 @@ export default function ProjectsBento() {
               if (!Array.isArray(project.screenshots)) return false;
               
               // Check if screenshots array has at least one item
-              if (project.screenshots.length === 0) return false;
+              if (!project.screenshots.length) return false;
               
               return true;
             })
@@ -112,7 +113,7 @@ export default function ProjectsBento() {
                   {hasScreenshots && (
                     <div className="mb-6 -mx-6 -mt-6">
                       <ImageCarousel 
-                        images={project.screenshots as string[]} 
+                        images={[...project.screenshots]} 
                         projectTitle={project.title}
                       />
                     </div>
@@ -122,7 +123,7 @@ export default function ProjectsBento() {
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="p-3 rounded-xl bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600">
+                        <div className="p-3 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600">
                           <FontAwesomeIcon icon={faCode} className="text-white text-base sm:text-lg" />
                         </div>
                         <h3 className="font-heading font-extrabold text-white text-base sm:text-lg md:text-[1.125rem]">
@@ -145,7 +146,7 @@ export default function ProjectsBento() {
                           </span>
                         </div>
                       )}
-                      <p className="font-body text-gray-300 leading-relaxed text-sm sm:text-base line-clamp-4">
+                      <p className="font-body text-slate-500 leading-relaxed text-sm sm:text-base line-clamp-4">
                         {project.description}
                       </p>
                     </div>
@@ -175,17 +176,30 @@ export default function ProjectsBento() {
                   {/* Footer with Links */}
                   <div className="flex gap-4 pt-6 border-t border-white/10 mt-auto">
                     {project.liveLink && project.liveLink !== '#' && (
-                      <motion.a
-                        href={project.liveLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-accent flex items-center gap-2 sm:gap-3 px-4 py-2.5 sm:px-6 sm:py-3.5 bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 text-white rounded-xl text-sm sm:text-base font-bold hover:shadow-xl hover:shadow-purple-500/50 transition-all flex-1 justify-center"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <FontAwesomeIcon icon={faExternalLinkAlt} className="text-sm sm:text-base" />
-                        <span>Live Demo</span>
-                      </motion.a>
+                      project.liveLink.startsWith('/') ? (
+                        <Link href={project.liveLink} className="flex-1">
+                          <motion.span
+                            className="font-accent flex items-center justify-center gap-2 sm:gap-3 px-4 py-2.5 sm:px-6 sm:py-3.5 bg-gradient-to-r from-sky-500 to-blue-600 text-white rounded-xl text-sm sm:text-base font-bold hover:shadow-xl hover:shadow-sky-500/30 transition-all"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            <FontAwesomeIcon icon={faExternalLinkAlt} className="text-sm sm:text-base" />
+                            <span>Showcase</span>
+                          </motion.span>
+                        </Link>
+                      ) : (
+                        <motion.a
+                          href={project.liveLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-accent flex items-center gap-2 sm:gap-3 px-4 py-2.5 sm:px-6 sm:py-3.5 bg-gradient-to-r from-sky-500 to-blue-600 text-white rounded-xl text-sm sm:text-base font-bold hover:shadow-xl hover:shadow-sky-500/30 transition-all flex-1 justify-center"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <FontAwesomeIcon icon={faExternalLinkAlt} className="text-sm sm:text-base" />
+                          <span>Live Demo</span>
+                        </motion.a>
+                      )
                     )}
                     {project.githubLink && project.githubLink !== '#' && (
                       <motion.a
@@ -212,7 +226,7 @@ export default function ProjectsBento() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 backdrop-blur-md rounded-lg border border-purple-500/30 p-8"
+          className="bg-gradient-to-r from-sky-600/15 to-blue-600/15 backdrop-blur-md rounded-lg border border-sky-400/30 p-8"
         >
           <div className="max-w-2xl mx-auto text-center">
             <AnimatePresence mode="wait">
@@ -224,7 +238,7 @@ export default function ProjectsBento() {
                   exit={{ opacity: 0, y: -20 }}
                   className="w-full"
                 >
-                  <h3 className="font-heading text-lg sm:text-xl md:text-[1.25rem] font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  <h3 className="font-heading text-lg sm:text-xl md:text-[1.25rem] font-bold mb-4 bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
                     Stay Updated with New Projects
                   </h3>
                   <p className="font-body text-sm sm:text-base text-gray-300 mb-6">
@@ -238,12 +252,12 @@ export default function ProjectsBento() {
                       placeholder="Enter your email"
                       required
                       disabled={subscriptionStatus === 'loading'}
-                      className="flex-1 px-4 py-3 text-sm sm:text-base bg-white/10 backdrop-blur-md border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 disabled:opacity-50"
+                      className="flex-1 px-4 py-3 text-sm sm:text-base bg-white/10 backdrop-blur-md border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-400 disabled:opacity-50"
                     />
                     <button
                       type="submit"
                       disabled={subscriptionStatus === 'loading'}
-                      className="font-accent px-4 py-2.5 sm:px-6 sm:py-3 bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all disabled:opacity-70 flex items-center justify-center gap-2 min-w-[120px]"
+                      className="font-accent px-4 py-2.5 sm:px-6 sm:py-3 bg-gradient-to-r from-sky-500 to-blue-600 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-sky-500/30 transition-all disabled:opacity-70 flex items-center justify-center gap-2 min-w-[120px]"
                     >
                       {subscriptionStatus === 'loading' ? (
                         <>

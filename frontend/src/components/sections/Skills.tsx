@@ -11,7 +11,7 @@ const skillCategories = [
   {
     title: 'Backend',
     skills: ['Flask', 'Python', 'Node.js', 'REST APIs', 'SQL', 'MongoDB'],
-    color: 'from-purple-400 to-pink-400',
+    color: 'from-sky-500 to-cyan-500',
   },
   {
     title: 'Tools & Others',
@@ -31,10 +31,10 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="font-heading text-2xl sm:text-3xl md:text-[1.75rem] lg:text-[2rem] font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-[1.75rem] lg:text-[2rem] font-bold mb-4 bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent">
             Skills & Technologies
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-sky-500 to-blue-600 mx-auto"></div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -45,7 +45,7 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-              className="p-6 bg-white/10 backdrop-blur-md rounded-lg border border-white/20"
+              className="p-6 bg-white/70 backdrop-blur-md rounded-lg border border-sky-200/60 shadow-lg shadow-slate-900/5"
             >
               <h3 className={`font-heading text-base sm:text-lg md:text-[1.125rem] font-bold mb-6 bg-gradient-to-r ${category.color} bg-clip-text text-transparent`}>
                 {category.title}
@@ -59,7 +59,7 @@ export default function Skills() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
                     whileHover={{ scale: 1.1 }}
-                    className="font-body px-4 py-2 bg-white/5 rounded-full border border-white/10 text-sm sm:text-base hover:bg-white/10 transition-colors cursor-default"
+                    className="font-body px-4 py-2 bg-white/80 rounded-full border border-sky-200/60 text-sm sm:text-base text-slate-700 hover:bg-white hover:border-sky-400/60 transition-colors cursor-default"
                   >
                     {skill}
                   </motion.span>

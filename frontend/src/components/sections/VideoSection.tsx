@@ -26,11 +26,11 @@ export default function VideoSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-              <h2 className="font-heading text-2xl sm:text-3xl md:text-[1.75rem] lg:text-[2rem] font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <h2 className="font-heading text-2xl sm:text-3xl md:text-[1.75rem] lg:text-[2rem] font-bold mb-4 bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent">
                 Technologies & Languages
               </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto"></div>
-              <p className="font-body text-gray-300 text-sm sm:text-base mt-4 max-w-2xl mx-auto">
+          <div className="w-24 h-1 bg-gradient-to-r from-sky-500 to-blue-600 mx-auto"></div>
+              <p className="font-body text-slate-600 text-sm sm:text-base mt-4 max-w-2xl mx-auto">
                 A visual journey through the technologies and programming languages I work with
               </p>
         </motion.div>

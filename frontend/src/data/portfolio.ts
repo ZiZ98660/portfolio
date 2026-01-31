@@ -1,199 +1,210 @@
 export const personalInfo = {
-  name: 'Ademola Adesina',
-  title: 'Software Engineer with a vision to specialize in blockchain',
-  tagline: 'Building scalable backend systems and AI-driven solutions. Currently pursuing a Master\'s in Software Engineering at Quantic School of Business and Technology.',
-  email: 'ademolaadesinadev@gmail.com',
-  phone: '+2349068406269',
-  location: 'Ibadan, Nigeria',
+  name: 'Sadiq Abdulazeez Adesina',
+  title: 'Frontend Developer · Health-tech & SaaS',
+  tagline: 'Frontend Developer with 2+ years building fast, scalable, user-focused web applications using React, Next.js, and TypeScript — and a licensed Pharmacist with a strong grasp of clinical workflows. Passionate about digital health, patient-centric interfaces, and clinical usability.',
+  email: 'sadiq.aa730@gmail.com',
+  phone: '+234 90 4342 0075',
+  location: 'Lagos, Nigeria',
 };
 
 export const impactMetrics = [
   {
-    value: 70,
-    suffix: '%',
-    label: 'Reduction in manual effort via eBay Automation Bot',
-    color: 'from-blue-400 to-cyan-400',
-  },
-  {
-    value: 80,
-    suffix: '%',
-    label: 'Automated SMS responses for business clients',
-    color: 'from-purple-400 to-pink-400',
-  },
-  {
-    value: 60,
-    suffix: '%',
-    label: 'Reduction in error recording delays at UCH',
-    color: 'from-green-400 to-emerald-400',
+    value: 2,
+    suffix: '+',
+    label: 'Years building health-tech & SaaS frontends',
+    color: 'from-sky-500 to-blue-600',
   },
   {
     value: 100,
     suffix: '%',
-    label: 'Job Success Score on Upwork',
-    color: 'from-yellow-400 to-orange-400',
+    label: 'Focus on component-driven, scalable UIs',
+    color: 'from-sky-500 to-cyan-500',
+  },
+  {
+    value: 1,
+    suffix: '',
+    label: 'Enterprise EMR (ACCESSEMR) in production',
+    color: 'from-cyan-500 to-blue-600',
+  },
+  {
+    value: 6,
+    suffix: '+',
+    label: 'Live applications shipped (Kita, HydroCIS, SendChamp, etc.)',
+    color: 'from-sky-400 to-blue-600',
   },
 ];
 
 export const technicalSkills = {
-  core: ['TypeScript', 'JavaScript', 'Python', 'Rust (Learning)'],
-  frontend: ['React', 'React Native', 'Next.js', 'HTML5', 'CSS3', 'Tailwind'],
-  backend: ['Node.js', 'Express', 'Flask', 'Solidity'],
-  database: ['MongoDB (Atlas)', 'MySQL', 'PostgreSQL'],
-  devops: ['Docker', 'Kubernetes', 'Git', 'GitHub', 'Cursor', 'Figma'],
+  core: ['TypeScript', 'JavaScript', 'React', 'Next.js'],
+  frontend: ['HTML5', 'CSS', 'Tailwind CSS', 'Redux', 'Context API', 'Zustand'],
+  backend: ['Node.js', 'Express.js'],
+  database: ['REST APIs', 'GraphQL'],
+  devops: ['Git', 'GitHub', 'BitBucket', 'CircleCI', 'Jira', 'Confluence', 'Slack'],
 };
 
 export const experience = [
   {
-    company: 'Handshake AI LLC',
-    location: 'San Francisco',
-    role: 'AI Trainer / Software Engineer',
-    period: '2025–Present',
+    company: 'Access Providence Health Systems Ltd',
+    location: 'Remote (Full-time)',
+    role: 'Front-End Developer',
+    period: 'Nov 2024 – Present',
     achievements: [
-      'Collaborating with researchers to refine LLM capabilities',
-      'Maintaining a ≥70% task approval rate on Project Canary',
+      'Building and maintaining ACCESSEMR, a full-featured Electronic Medical Records system streamlining clinical workflows.',
+      'Developed reusable components for patient onboarding/encounters, prescriptions, diagnostics, and SOAP notes.',
+      'Implemented Liquid.js templating for SOAP notes, consent forms, and real-time documentation updates.',
+      'Integrated editable, condition-driven templates for clinical documents.',
+      'Collaborated with cross-functional clinical and technical teams; used TypeScript, Zustand, and REST APIs.',
     ],
   },
   {
-    company: 'University College Hospital (UCH)',
-    location: 'Ibadan, Nigeria',
-    role: 'Pharmacist Intern',
-    period: '2025–Present',
+    company: 'Federal Inland Revenue Service (FIRS)',
+    location: 'Remote (Freelance)',
+    role: 'Front-End Developer',
+    period: 'Sept 2024 – Nov 2024',
     achievements: [
-      'Designing a Medication Error Reporting App for staff across 5+ departments (Work in Progress)',
-      'Replacing paper forms with digital solution (Not yet published)',
+      'Built dynamic, responsive interfaces using React, TypeScript, and @tanstack/react-table for advanced data table views.',
+      'Developed reusable components, project dashboards, role-based access, Gantt-style task views, and PDF export.',
+      'Ensured clean, scalable code with React hooks, modular patterns, and responsive design.',
     ],
   },
   {
-    company: 'Freelance Software Engineer',
-    location: 'Remote',
-    role: 'Software Engineer',
-    period: '2024–Present',
+    company: 'Buff-Knight',
+    location: 'Remote (Freelance)',
+    role: 'Front-End Developer',
+    period: 'Sep 2023 – Dec 2023',
     achievements: [
-      'Built automated bots (eBay, SMS text-back)',
-      'Collaborated with other developers on Upwork to develop hotel booking systems',
+      'Built a real-time chess platform using Next.js and TypeScript.',
+      'Designed and optimized interactive UI for cross-device gameplay.',
+    ],
+  },
+  {
+    company: 'SendChamp Inc.',
+    location: 'Remote (Full-time)',
+    role: 'Front-End Developer',
+    period: 'Jan 2023 – Apr 2023',
+    achievements: [
+      'Built and optimized business communication platforms.',
+      'Developed advanced search filters for improved data retrieval.',
+    ],
+  },
+  {
+    company: 'PathBuddy.io',
+    location: 'Remote (Freelance)',
+    role: 'Front-End Developer',
+    period: 'Oct 2022 – Dec 2022',
+    achievements: [
+      'Developed product listing and checkout features.',
+      'Ensured scalable UI components using React and TypeScript.',
+    ],
+  },
+  {
+    company: 'Soar Digital',
+    location: 'Remote (Internship)',
+    role: 'Front-End Developer',
+    period: 'May 2022 – Dec 2022',
+    achievements: [
+      'Built interfaces for clients in energy and oil/gas sectors.',
+      'Used GraphQL, REST APIs, and graphical charts for business data.',
     ],
   },
 ];
 
-export const featuredProjects = [
+export type FeaturedProject = {
+  id: number;
+  title: string;
+  description: string;
+  tech: string[];
+  category: string;
+  featured: boolean;
+  liveLink: string;
+  githubLink: string;
+  screenshots: readonly string[] | string[];
+  inProgress?: boolean;
+};
+
+export const featuredProjects: FeaturedProject[] = [
   {
     id: 1,
-    title: 'ASI Autonomous Agents Platform',
-    description: 'A decentralized AI platform where autonomous agents perceive, reason, and act across Web3 systems. Built for the ASI Alliance Hackathon with blockchain integration, real-time agent communication, and production-ready deployment.',
-    tech: ['Blockchain', 'Rust', 'Anchor', 'Next.js', 'Flask', 'PostgreSQL'],
-    category: 'web3',
+    title: 'ACCESSEMR',
+    description: 'Full-featured Electronic Medical Records system streamlining clinical workflows. Reusable components for patient onboarding, encounters, prescriptions, diagnostics, and SOAP notes; Liquid.js templating and condition-driven clinical documents.',
+    tech: ['React', 'TypeScript', 'Zustand', 'Liquid.js', 'REST APIs'],
+    category: 'web',
     featured: true,
-    liveLink: 'https://asi-frontend.onrender.com/',
-    githubLink: '#',
+    liveLink: '/showcase/access-emr',
+    githubLink: 'https://github.com/accessphs/access-emr',
     screenshots: [
-      '/project_asi/img1.png',
-      '/project_asi/img2.png',
-      '/project_asi/img3.png',
-      '/project_asi/img4.png',
+      '/project_emr/img1.png',
+      '/project_emr/img2.png',
+      '/project_emr/img3.png',
     ] as const,
   },
   {
     id: 2,
-    title: 'CipherPool - Encrypted Dark Pool Auctions',
-    description: 'MEV-resistant encrypted dark pool batch auctions on Solana. Private trading with end-to-end encryption through Arcium\'s encrypted compute. Built for Arcium x Colosseum Cypherpunk Hackathon 2025 - Encrypt Everything Track.',
-    tech: ['Blockchain', 'Rust', 'Anchor', 'Next.js', 'Flask', 'PostgreSQL'],
-    category: 'web3',
+    title: 'Kita',
+    description: 'Live application for energy/signup flows at Asiko Energy.',
+    tech: ['React', 'TypeScript'],
+    category: 'web',
     featured: true,
-    liveLink: 'https://cipherpool-frontend.onrender.com/auctions',
+    liveLink: 'https://kita.asikoenergy.com/signup',
     githubLink: '#',
     screenshots: [
-      '/project_cipha/img5.png',
-      '/project_cipha/img6.png',
-      '/project_cipha/img7.png',
+      '/project_kita/img1.png',
+    ] as const,
+  },
+  
+  {
+    id: 3,
+    title: 'BodSquare',
+    description: 'Live application for BodSquare.',
+    tech: ['React', 'TypeScript'],
+    category: 'web',
+    featured: true,
+    liveLink: 'https://bodsquare.com',
+    githubLink: '#',
+    screenshots: [
+      '/project_bod/img1.png',
     ] as const,
   },
   {
-    id: 3,
-    title: 'Medication Error Reporting App',
-    description: 'A mobile-first system for UCH staff to report errors in real-time. (Work in Progress - Not yet published)',
-    tech: ['React Native', 'Node.js'],
-    category: 'mobile',
-    featured: true,
-    liveLink: '#',
-    githubLink: '#',
-    inProgress: true,
-  },
-  {
     id: 4,
-    title: 'eBay Automation Bot',
-    description: 'Streamlines product research with real-time listing analysis and profit grading.',
-    tech: ['Python', 'Node.js', 'Automation Scripts'],
+    title: 'SendChamp',
+    description: 'Multi-channel business communication platform.',
+    tech: ['React', 'TypeScript'],
     category: 'web',
     featured: true,
-    liveLink: '#',
-    githubLink: '#',
-  },
-  {
-    id: 5,
-    title: 'Prescripto - Doctor Appointment Platform',
-    description: 'MERN stack application with real-time scheduling and patient management. A comprehensive healthcare platform for booking appointments, managing patient records, and streamlining medical workflows.',
-    tech: ['MongoDB', 'Express', 'React', 'Node.js'],
-    category: 'web',
-    featured: true,
-    liveLink: 'https://prescripto-frontend-x1dv.onrender.com',
+    liveLink: 'https://sendchamp.com',
     githubLink: '#',
     screenshots: [
-      '/assets/doc_app.png',
-    ],
+      '/project_sc/img1.png',
+    ] as const,
   },
-  {
-    id: 6,
-    title: 'MedRep Connect',
-    description: 'Connecting medical reps to companies and hospitals using WebSockets.',
-    tech: ['React', 'Node.js', 'WebSockets'],
-    category: 'web',
-    featured: true,
-    inProgress: true,
-    liveLink: '#',
-    githubLink: '#',
-  },
+
 ];
 
 export const education = [
   {
-    degree: "Master's in Software Engineering",
-    institution: 'Quantic School of Business and Technology',
-    period: '2025-2026',
+    degree: 'Bachelor of Pharmacy (B. Pharm)',
+    institution: 'University of Ibadan, Nigeria',
+    period: 'Feb 2017 – Jun 2024',
     type: 'degree',
   },
   {
-    degree: 'Diploma in Backend Engineering',
-    institution: 'AltSchool Africa',
-    period: '2024',
-    type: 'diploma',
-  },
-  {
-    degree: 'BPharm',
-    institution: 'University of Ibadan',
-    period: '2018-2024',
-    type: 'degree',
+    degree: 'Full Stack Web Development Certificate',
+    institution: 'Coursera (IBM Collaboration)',
+    period: 'Mar 2022 – Jul 2022',
+    type: 'certificate',
   },
 ];
 
 export const certifications = [
   {
-    name: 'IBM DevOps',
-    issuer: 'IBM',
-  },
-  {
-    name: 'AWS Cloud Foundations',
-    issuer: 'Amazon Web Services',
-  },
-  {
-    name: 'Handshake Level I & II',
-    issuer: 'Handshake AI',
+    name: 'Full Stack Web Development (React, Node.js, MongoDB)',
+    issuer: 'Coursera / IBM',
   },
 ];
 
 export const socialLinks = [
-  { name: 'GitHub', url: 'https://github.com/semiuAdesina', icon: 'github' },
-  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/semiu-ademola-adesina-585141319/', icon: 'linkedin' },
-  { name: 'Twitter', url: 'https://x.com/Damozpixie1', icon: 'twitter' },
-  { name: 'Email', url: 'mailto:ademolaadesinadev@gmail.com', icon: 'envelope' },
+  { name: 'GitHub', url: 'https://github.com/ZiZ98660', icon: 'github' },
+  { name: 'LinkedIn', url: 'https://linkedin.com/in/abduazeez-sadiq-97aaa0209', icon: 'linkedin' },
+  { name: 'Email', url: 'mailto:sadiq.aa730@gmail.com', icon: 'envelope' },
 ];
-

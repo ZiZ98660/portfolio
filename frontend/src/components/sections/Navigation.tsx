@@ -59,22 +59,22 @@ export default function Navigation() {
     <nav
       className={`w-full z-[9999] transition-all duration-300 ${
         // On mobile: relative to push content down, on desktop: fixed
-        isMobileMenuOpen ? 'relative md:fixed' : 'fixed top-0 left-0 right-0'
+        isMobileMenuOpen ? "relative md:fixed" : "fixed top-0 left-0 right-0"
       } ${
         isScrolled || isMobileMenuOpen
-          ? 'bg-black/80 backdrop-blur-md border-b border-white/10'
-          : 'bg-transparent'
+          ? "bg-black/80 backdrop-blur-md border-b border-white/10"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex justify-between items-center h-16 relative z-[10000]">
           <motion.a
             href="#"
-            className="font-heading text-lg sm:text-xl md:text-[1.25rem] font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent flex items-center gap-2 relative z-[10001]"
+            className="font-heading text-lg sm:text-xl md:text-[1.25rem] font-bold bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent  flex items-center gap-2 relative z-[10001]"
             whileHover={{ scale: 1.05 }}
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            <FontAwesomeIcon icon={faCode} className="text-purple-400" />
+            <FontAwesomeIcon icon={faCode} className="text-sky-500" />
             <span className="hidden sm:inline">Portfolio</span>
             <span className="sm:hidden">PF</span>
           </motion.a>
@@ -85,9 +85,12 @@ export default function Navigation() {
               <a
                 key={item.href}
                 href={item.href}
-                className="font-body text-sm sm:text-base md:text-base text-gray-300 hover:text-white transition-colors font-medium flex items-center gap-2 group"
+                className="font-body text-sm sm:text-base md:text-base text-slate-600 hover:text-sky-600 transition-colors font-medium flex items-center gap-2 group"
               >
-                <FontAwesomeIcon icon={item.icon} className="text-xs sm:text-sm text-purple-400 group-hover:text-purple-300 transition-colors" />
+                <FontAwesomeIcon
+                  icon={item.icon}
+                  className="text-xs sm:text-sm text-sky-500 group-hover:text-sky-600 transition-colors"
+                />
                 {item.label}
               </a>
             ))}
@@ -100,11 +103,11 @@ export default function Navigation() {
               e.preventDefault();
               e.stopPropagation();
               const willOpen = !isMobileMenuOpen;
-              
+
               // If opening the menu, instantly scroll to top first, then open menu
               if (willOpen) {
                 // Instant scroll to top
-                window.scrollTo({ top: 0, behavior: 'auto' });
+                window.scrollTo({ top: 0, behavior: "auto" });
                 // Use requestAnimationFrame to ensure scroll completes before opening menu
                 requestAnimationFrame(() => {
                   setIsMobileMenuOpen(true);
@@ -126,7 +129,10 @@ export default function Navigation() {
               animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}
               transition={{ duration: 0.2 }}
             >
-              <FontAwesomeIcon icon={isMobileMenuOpen ? faTimes : faBars} className="text-lg sm:text-xl" />
+              <FontAwesomeIcon
+                icon={isMobileMenuOpen ? faTimes : faBars}
+                className="text-lg sm:text-xl"
+              />
             </motion.div>
           </button>
         </div>
@@ -136,9 +142,9 @@ export default function Navigation() {
           {isMobileMenuOpen && (
             <motion.div
               initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
+              animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
               className="md:hidden overflow-hidden"
             >
               <div className="pb-4 pt-2">
@@ -147,10 +153,10 @@ export default function Navigation() {
                     key={item.href}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ 
-                      duration: 0.3, 
+                    transition={{
+                      duration: 0.3,
                       delay: index * 0.05,
-                      ease: 'easeOut'
+                      ease: "easeOut",
                     }}
                   >
                     <a
@@ -158,9 +164,9 @@ export default function Navigation() {
                       className="block px-4 py-3 text-sm sm:text-base md:text-base text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200 flex items-center gap-3 group"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      <FontAwesomeIcon 
-                        icon={item.icon} 
-                        className="text-xs sm:text-sm text-purple-400 group-hover:text-purple-300 transition-colors" 
+                      <FontAwesomeIcon
+                        icon={item.icon}
+                        className="text-xs sm:text-sm text-sky-500 group-hover:text-sky-400 transition-colors"
                       />
                       <span className="font-medium">{item.label}</span>
                     </a>

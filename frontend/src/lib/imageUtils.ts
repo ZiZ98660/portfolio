@@ -17,12 +17,12 @@ export function normalizeImagePath(path: string): string {
  */
 export function getImagePath(path: string): string {
   const normalized = normalizeImagePath(path);
-  
+  // Data URIs (e.g. inline SVG placeholders) stay as-is
+  if (normalized.startsWith('data:')) return normalized;
   // Ensure path starts with /
   if (!normalized.startsWith('/')) {
     return `/${normalized}`;
   }
-  
   return normalized;
 }
 

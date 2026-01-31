@@ -170,7 +170,7 @@ export default function ImageCarousel({ images, projectTitle }: ImageCarouselPro
               }}
               className={`w-2 h-2 rounded-full transition-all ${
                 index === currentIndex
-                  ? 'bg-purple-400 w-6'
+                  ? 'bg-sky-400 w-6'
                   : 'bg-white/40 hover:bg-white/60'
               }`}
               aria-label={`Go to slide ${index + 1}`}
@@ -279,7 +279,7 @@ export default function ImageCarousel({ images, projectTitle }: ImageCarouselPro
                       onClick={() => goToSlide(index)}
                       className={`flex-shrink-0 w-20 h-12 rounded-lg overflow-hidden border-2 transition-all ${
                         index === currentIndex
-                          ? 'border-purple-400 scale-110'
+                          ? 'border-sky-400 scale-110'
                           : 'border-white/30 hover:border-white/60'
                       }`}
                     >

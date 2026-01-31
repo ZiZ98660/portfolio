@@ -29,10 +29,10 @@ export default function Education() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-heading text-2xl sm:text-3xl md:text-[1.75rem] lg:text-[2rem] font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-[1.75rem] lg:text-[2rem] font-bold mb-4 bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent">
             Education & Certifications
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-sky-500 to-blue-600 mx-auto"></div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -44,8 +44,8 @@ export default function Education() {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <h3 className="font-heading text-lg sm:text-xl md:text-[1.25rem] font-bold text-white mb-6 flex items-center gap-3">
-              <FontAwesomeIcon icon={faGraduationCap} className="text-purple-400 text-base sm:text-lg" />
+            <h3 className="font-heading text-lg sm:text-xl md:text-[1.25rem] font-bold text-slate-900 mb-6 flex items-center gap-3">
+              <FontAwesomeIcon icon={faGraduationCap} className="text-sky-500 text-base sm:text-lg" />
               Education
             </h3>
             {education.map((edu, index) => (
@@ -63,24 +63,24 @@ export default function Education() {
                 <motion.div
                   whileHover={{ y: -12 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="p-6 bg-white/5 backdrop-blur-md rounded-lg border border-white/10 hover:border-white/30 transition-all relative z-10"
+                  className="p-6 bg-white/70 backdrop-blur-md rounded-lg border border-sky-200/60 hover:border-sky-400/70 shadow-lg shadow-slate-900/5 transition-all relative z-10"
                 >
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="p-3 bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 rounded-lg">
+                    <div className="p-3 bg-gradient-to-r from-sky-500 to-blue-600 rounded-lg">
                       <FontAwesomeIcon icon={faGraduationCap} className="text-white text-lg sm:text-xl" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-start justify-between mb-2">
-                        <h4 className="font-heading text-base sm:text-lg md:text-[1.125rem] font-bold text-white">{edu.degree}</h4>
-                        <span className="px-3 py-1.5 sm:py-1 bg-purple-600/20 text-purple-300 rounded-full text-xs sm:text-sm font-semibold">
+                        <h4 className="font-heading text-base sm:text-lg md:text-[1.125rem] font-bold text-slate-900">{edu.degree}</h4>
+                        <span className="px-3 py-1.5 sm:py-1 bg-sky-100 text-sky-700 rounded-full text-xs sm:text-sm font-semibold">
                           {edu.type}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2 text-sm sm:text-base text-purple-400 font-semibold mb-2">
+                      <div className="flex items-center gap-2 text-sm sm:text-base text-sky-600 font-semibold mb-2">
                         <FontAwesomeIcon icon={faUniversity} className="text-xs sm:text-sm" />
                         <span>{edu.institution}</span>
                       </div>
-                      <div className="font-body flex items-center gap-2 text-gray-400 text-sm sm:text-base">
+                      <div className="font-body flex items-center gap-2 text-slate-500 text-sm sm:text-base">
                         <FontAwesomeIcon icon={faCalendarAlt} className="text-xs sm:text-sm" />
                         <span>{edu.period}</span>
                       </div>
@@ -99,8 +99,8 @@ export default function Education() {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <h3 className="font-heading text-lg sm:text-xl md:text-[1.25rem] font-bold text-white mb-6 flex items-center gap-3">
-              <FontAwesomeIcon icon={faCertificate} className="text-purple-400 text-base sm:text-lg" />
+            <h3 className="font-heading text-lg sm:text-xl md:text-[1.25rem] font-bold text-slate-900 mb-6 flex items-center gap-3">
+              <FontAwesomeIcon icon={faCertificate} className="text-sky-500 text-base sm:text-lg" />
               Certifications
             </h3>
             {certifications.map((cert, index) => (
@@ -118,15 +118,15 @@ export default function Education() {
                 <motion.div
                   whileHover={{ y: -12 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="p-6 bg-white/5 backdrop-blur-md rounded-lg border border-white/10 hover:border-white/30 transition-all relative z-10"
+                  className="p-6 bg-white/70 backdrop-blur-md rounded-lg border border-sky-200/60 hover:border-sky-400/70 shadow-lg shadow-slate-900/5 transition-all relative z-10"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="p-3 bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 rounded-lg">
+                    <div className="p-3 bg-gradient-to-r from-sky-500 to-blue-600 rounded-lg">
                       <FontAwesomeIcon icon={faAward} className="text-white text-lg sm:text-xl" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-heading text-base sm:text-lg md:text-[1.125rem] font-bold text-white mb-2">{cert.name}</h4>
-                      <p className="font-body text-sm sm:text-base text-purple-400 font-semibold">{cert.issuer}</p>
+                      <h4 className="font-heading text-base sm:text-lg md:text-[1.125rem] font-bold text-slate-900 mb-2">{cert.name}</h4>
+                      <p className="font-body text-sm sm:text-base text-sky-400 font-semibold">{cert.issuer}</p>
                     </div>
                   </div>
                 </motion.div>

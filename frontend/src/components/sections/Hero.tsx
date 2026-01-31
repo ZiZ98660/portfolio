@@ -6,12 +6,13 @@ import { faCode } from '@fortawesome/free-solid-svg-icons';
 import { personalInfo } from '@/data/portfolio';
 import dynamic from 'next/dynamic';
 import TypingText from '../ui/TypingText';
+import Image from 'next/image';
 
 // Lazy load 3D scene for better performance
 const Hero3DScene = dynamic(() => import('../3d/Hero3DScene'), {
   loading: () => (
     <div className="w-full h-full flex items-center justify-center">
-      <div className="w-16 h-16 border-4 border-purple-500 border-t-transparent rounded-full animate-spin"></div>
+      <div className="w-16 h-16 border-4 border-sky-500 border-t-transparent rounded-full animate-spin"></div>
     </div>
   ),
   ssr: false, // 3D components don't need SSR
@@ -26,7 +27,7 @@ export default function Hero({ show3D = true }: HeroProps) {
     <section className="relative pt-20 pb-8 sm:pt-24 sm:pb-12 md:pt-28 md:pb-16 lg:pt-32 lg:pb-20 flex items-center justify-center overflow-hidden">
       {/* Content Overlay */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+        <div className="flex items-center">
           {/* Left: Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -52,17 +53,23 @@ export default function Hero({ show3D = true }: HeroProps) {
                       ease: "linear",
                     }}
                   >
-                    <svg 
-                      className="w-full h-full" 
-                      viewBox="0 0 100 100" 
+                    <svg
+                      className="w-full h-full"
+                      viewBox="0 0 100 100"
                       preserveAspectRatio="xMidYMid meet"
-                      style={{ width: '100%', height: '100%' }}
+                      style={{ width: "100%", height: "100%" }}
                     >
                       <defs>
-                        <linearGradient id={`ringGradient-${personalInfo.name.replace(/\s+/g, '-')}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor="#a855f7" />
-                          <stop offset="50%" stopColor="#ec4899" />
-                          <stop offset="100%" stopColor="#3b82f6" />
+                        <linearGradient
+                          id={`ringGradient-${personalInfo.name.replace(/\s+/g, "-")}`}
+                          x1="0%"
+                          y1="0%"
+                          x2="100%"
+                          y2="100%"
+                        >
+                          <stop offset="0%" stopColor="#0ea5e9" />
+                          <stop offset="50%" stopColor="#06b6d4" />
+                          <stop offset="100%" stopColor="#38bdf8" />
                         </linearGradient>
                       </defs>
                       <circle
@@ -70,15 +77,15 @@ export default function Hero({ show3D = true }: HeroProps) {
                         cy="50"
                         r="48"
                         fill="none"
-                        stroke={`url(#ringGradient-${personalInfo.name.replace(/\s+/g, '-')})`}
+                        stroke={`url(#ringGradient-${personalInfo.name.replace(/\s+/g, "-")})`}
                         strokeWidth="2"
                       />
                     </svg>
                   </motion.div>
-                  
+
                   {/* Pulsing outer ring */}
                   <motion.div
-                    className="absolute -inset-3 rounded-full border-2 border-purple-400/50 pointer-events-none z-0"
+                    className="absolute -inset-3 rounded-full border-2 border-sky-400/50 pointer-events-none z-0"
                     animate={{
                       scale: [1, 1.2, 1],
                       opacity: [0.3, 0.6, 0.3],
@@ -89,19 +96,24 @@ export default function Hero({ show3D = true }: HeroProps) {
                       ease: "easeInOut",
                     }}
                   />
-                  
+
                   {/* Profile image container - perfectly circular */}
-                  <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-gray-800 shadow-xl bg-gray-900 z-10" style={{ aspectRatio: '1/1' }}>
-                    <img
+                  <div
+                    className="relative w-full h-full rounded-full overflow-hidden border-2 border-sky-200 shadow-xl bg-white z-10"
+                    style={{ aspectRatio: "1/1" }}
+                  >
+                    <Image
+                    width={100}
+                    height={100}
                       src="/assets/pro.jpg"
                       alt={personalInfo.name}
                       className="w-full h-full object-cover rounded-full"
-                      style={{ 
-                        width: '100%', 
-                        height: '100%', 
-                        objectFit: 'cover',
-                        borderRadius: '50%',
-                        display: 'block'
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        borderRadius: "50%",
+                        display: "block",
                       }}
                       loading="eager"
                     />
@@ -110,14 +122,17 @@ export default function Hero({ show3D = true }: HeroProps) {
                   </div>
                 </div>
               </div>
-              
-              <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-[2.25rem] font-bold mb-3 sm:mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+
+              <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-[2.25rem] font-bold mb-3 sm:mb-4bg-gradient-to-r from-sky-600 via-cyan-500 to-blue-600 bg-clip-text text-transparent">
                 {personalInfo.name}
               </h1>
               <h2 className="font-heading text-lg sm:text-xl md:text-[1.375rem] lg:text-[1.5rem] font-semibold text-gray-300 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3 justify-center lg:justify-start min-h-[1.5em]">
-                <FontAwesomeIcon icon={faCode} className="text-purple-400 text-sm sm:text-base md:text-lg" />
-                <TypingText 
-                  text={personalInfo.title} 
+                <FontAwesomeIcon
+                  icon={faCode}
+                  className="text-sky-500 text-sm sm:text-base md:text-lg"
+                />
+                <TypingText
+                  text={personalInfo.title}
                   speed={50}
                   className="inline-block font-heading"
                 />
@@ -126,7 +141,7 @@ export default function Hero({ show3D = true }: HeroProps) {
                 {personalInfo.tagline}
               </p>
             </motion.div>
-            
+
             <motion.div
               className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4"
               initial={{ opacity: 0, y: 20 }}
@@ -135,7 +150,7 @@ export default function Hero({ show3D = true }: HeroProps) {
             >
               <motion.a
                 href="#projects"
-                className="font-accent px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-3.5 bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 text-white rounded-full text-sm sm:text-base font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all flex items-center gap-2"
+                className="font-accent px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-3.5 bg-gradient-to-r from-sky-500 to-blue-600 text-white rounded-full text-sm sm:text-base font-semibold hover:shadow-lg hover:shadow-sky-500/30 transition-all flex items-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -143,28 +158,13 @@ export default function Hero({ show3D = true }: HeroProps) {
               </motion.a>
               <motion.a
                 href="#contact"
-                className="font-accent px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-3.5 bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 text-white rounded-full text-sm sm:text-base font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all flex items-center gap-2 border border-purple-500/30"
+                className="font-accent px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-3.5 bg-gradient-to-r from-sky-500 to-blue-600 text-white rounded-full text-sm sm:text-base font-semibold hover:shadow-lg hover:shadow-sky-500/30 transition-all flex items-center gap-2 border border-sky-400/30"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Get In Touch
               </motion.a>
             </motion.div>
-          </motion.div>
-
-          {/* Right: 3D GLB Model */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex items-center justify-center mt-8 lg:mt-0"
-          >
-            <div className="w-full h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] bg-white/5 backdrop-blur-md rounded-lg border border-white/10 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-pink-600/10 opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none"></div>
-              <div className="w-full h-full relative z-0">
-                <Hero3DScene />
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>
