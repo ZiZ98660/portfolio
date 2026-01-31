@@ -148,7 +148,7 @@ export default function Contact() {
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   required
                   className="w-full px-4 py-3 text-sm sm:text-base bg-white border border-sky-200/60 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-400"
-                  placeholder="Project Inquir"
+                  placeholder="Project Inquiry"
                 />
               </div>
               <div>

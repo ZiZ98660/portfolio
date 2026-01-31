@@ -107,7 +107,7 @@ export default function Hero({ show3D = true }: HeroProps) {
                     height={100}
                       src="/assets/pro.jpg"
                       alt={personalInfo.name}
-                      className="w-full h-full object-cover rounded-full"
+                      className="w-full h-full object-cover object-top rounded-full"
                       style={{
                         width: "100%",
                         height: "100%",

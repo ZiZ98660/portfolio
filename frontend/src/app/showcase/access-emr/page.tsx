@@ -59,7 +59,7 @@ export default function AccessEMRShowcasePage() {
               <span className="hidden sm:inline">View Code</span>
             </a>
             <a
-              href="https://staging.accessemr.app"
+              href="https://sih.accessemr.app/login"
               target="_blank"
               rel="noopener noreferrer"
               className="font-body bg-gradient-to-r from-sky-500 to-blue-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm sm:text-base font-semibold shadow-md hover:shadow-lg hover:shadow-sky-500/25 transition-all"
@@ -492,7 +492,7 @@ export default function AccessEMRShowcasePage() {
                 View on GitHub
               </a>
               <a
-                href="https://staging.accessemr.app"
+                href="https://sih.accessemr.app/login"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 text-white font-semibold shadow-lg shadow-sky-500/30 hover:shadow-xl hover:shadow-sky-500/40 transition-all"
