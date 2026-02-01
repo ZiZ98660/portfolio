@@ -26,9 +26,14 @@ app.config['PORTFOLIO_OWNER_EMAIL'] = os.environ.get('PORTFOLIO_OWNER_EMAIL')
 # Enable CORS
 CORS(app, resources={
     r"/api/*": {
-        "origins": "*",
+        "origins": [
+            "http://localhost:3000",
+            "https://ziz-dev-portfolio.vercel.app",  # Your actual Vercel domain
+            "https://*.vercel.app"  # All Vercel preview deployments
+        ],
         "methods": ["GET", "POST", "OPTIONS"],
-        "allow_headers": ["Content-Type"]
+        "allow_headers": ["Content-Type"],
+        "supports_credentials": False
     }
 })
  
