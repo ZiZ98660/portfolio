@@ -201,18 +201,7 @@ export default function ProjectsBento() {
                         </motion.a>
                       )
                     )}
-                    {project.githubLink && project.githubLink !== '#' && (
-                      <motion.a
-                        href={project.githubLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3.5 bg-white/10 text-white rounded-xl text-sm sm:text-base font-semibold hover:bg-white/20 transition-all"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <FontAwesomeIcon icon={faGithubBrand} className="text-base sm:text-lg" />
-                      </motion.a>
-                    )}
+                   
                   </div>
                 </div>
                 </motion.div>

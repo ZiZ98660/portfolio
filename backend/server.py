@@ -24,13 +24,19 @@ app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_USERNAME')
 app.config['PORTFOLIO_OWNER_EMAIL'] = os.environ.get('PORTFOLIO_OWNER_EMAIL')
  
 # Enable CORS
-CORS(app, resources={r"/api/*": {"origins": "*"}})
+CORS(app, resources={
+    r"/api/*": {
+        "origins": "*",
+        "methods": ["GET", "POST", "OPTIONS"],
+        "allow_headers": ["Content-Type"]
+    }
+})
  
 # Initialize email
 mail = Mail(app)
  
 # Simple JSON file storage (persistent across restarts)
-SUBSCRIBERS_FILE = 'subscribers.json'
+SUBSCRIBERS_FILE = os.path.join(os.environ.get('DATA_DIR', '.'), 'subscribers.json')
  
 def load_subscribers():
     """Load subscribers from JSON file"""

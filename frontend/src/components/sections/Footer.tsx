@@ -87,12 +87,10 @@ export default function Footer() {
   ];
 
   const services = [
+    'Frontend Development',
     'Backend Development',
-    'AI Solutions',
-    'Full-Stack Development',
+    'Systems Architecture',
     'Mobile Apps',
-    'API Design',
-    'System Architecture',
   ];
 
   const technologies = [
