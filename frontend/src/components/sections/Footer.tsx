@@ -96,10 +96,10 @@ export default function Footer() {
   const technologies = [
     'TypeScript',
     'Python',
-    'React',
-    'Node.js',
+    'Next.js',
     'Flask',
-    'MongoDB',
+    'Tailwind CSS',
+    'React',
   ];
 
   return (

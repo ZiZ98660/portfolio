@@ -50,7 +50,7 @@ export default function AccessEMRShowcasePage() {
           </Link>
           <div className="flex items-center gap-3 sm:gap-4">
             <a
-              href="[Link to your GitHub Repo]"
+              href="https://github.com/accessphs/access-emr"
               target="_blank"
               rel="noopener noreferrer"
               className="font-body text-slate-600 hover:text-sky-600 flex items-center gap-2 text-sm sm:text-base font-medium transition-colors"
@@ -107,7 +107,7 @@ export default function AccessEMRShowcasePage() {
           >
             <div className="flex items-center gap-2 text-slate-600">
               <FontAwesomeIcon icon={faClock} className="text-sky-500" />
-              <span className="text-sm font-medium">6+ Months Development</span>
+              <span className="text-sm font-medium">7+ Months Development</span>
             </div>
             <div className="flex items-center gap-2 text-slate-600">
               <FontAwesomeIcon icon={faUsers} className="text-sky-500" />
@@ -210,10 +210,24 @@ export default function AccessEMRShowcasePage() {
                       I built a library of reusable UI primitives (inputs, tables, modals) ensuring visual consistency and accelerating feature development across the entire application.
                     </p>
                   </div>
+                  
                 </motion.div>
+                <div className="relative rounded-xl overflow-hidden border border-sky-200 shadow-md">
+                <img 
+                  src="/project_emr/img7.png" 
+                  alt="Componentized UI & Design System" 
+                  className="w-full h-auto"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/80 to-transparent p-4">
+                  <p className="text-white text-xs font-medium">
+                    Reusable UI primitives for consistent user experience
+                  </p>
+                </div>
+              </div>
               </div>
             </div>
           </div>
+          
         </motion.section>
  
         {/* Key Features */}

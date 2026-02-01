@@ -1,86 +1,63 @@
 'use client';
-
-import { useState, useEffect, useRef } from 'react';
+ 
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { getImagePath, isValidImagePath } from '@/lib/imageUtils';
-
+import { getImagePath } from '@/lib/imageUtils';
+ 
 interface ImageCarouselProps {
   images: readonly string[] | string[];
   projectTitle: string;
 }
-
-// Helper function to properly encode image paths for consistent server/client rendering
-const encodeImagePath = (path: string): string => {
-  // Use the centralized image utility to ensure correct paths
-  // No validation or logging - just normalize the path
-  const normalizedPath = getImagePath(path);
-  return normalizedPath;
-};
-
+ 
 export default function ImageCarousel({ images, projectTitle }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
-
-  // No validation logging - paths are handled correctly
-
-
-  // Auto-scroll functionality
+ 
   useEffect(() => {
-    if (!isFullscreen) {
+    if (!isFullscreen && images.length > 1) {
       const interval = setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % images.length);
-      }, 4000); // Change image every 4 seconds
-
+      }, 4000);
       return () => clearInterval(interval);
     }
   }, [images.length, isFullscreen]);
-
+ 
   const goToNext = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
   };
-
+ 
   const goToPrevious = () => {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   };
-
+ 
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
   };
-
-  // Touch handlers for mobile swipe
+ 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX);
   };
-
+ 
   const handleTouchMove = (e: React.TouchEvent) => {
     setTouchEnd(e.targetTouches[0].clientX);
   };
-
+ 
   const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
     const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
-
-    if (isLeftSwipe) {
-      goToNext();
-    }
-    if (isRightSwipe) {
-      goToPrevious();
-    }
+    if (distance > 50) goToNext();
+    if (distance < -50) goToPrevious();
   };
-
+ 
   return (
     <>
       {/* Carousel Preview */}
       <div 
-        ref={carouselRef}
-        className="relative w-full h-64 md:h-80 lg:h-96 rounded-xl overflow-hidden bg-white/5 border border-white/10 group cursor-pointer"
+        className="relative w-full h-64 md:h-80 lg:h-96 rounded-xl overflow-hidden bg-slate-400 border border-slate-300 group cursor-pointer"
         onClick={() => setIsFullscreen(true)}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
@@ -89,76 +66,54 @@ export default function ImageCarousel({ images, projectTitle }: ImageCarouselPro
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={currentIndex}
-            initial={false}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="absolute inset-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-slate-400 to-slate-500"
           >
-            {images.length > 0 && (() => {
-              // Get the current image path and ensure it's correct
-              let imagePath = images[currentIndex];
-              
-              // Runtime fix: If we detect old Screenshot path, try to map it to correct path
-              if (imagePath && imagePath.includes('Screenshot')) {
-                // Try to map old path to correct path based on project and index
-                if (imagePath.includes('project_asi')) {
-                  // Map based on current index (0-3 for ASI project)
-                  const asiImages = ['/project_asi/img1.png', '/project_asi/img2.png', '/project_asi/img3.png', '/project_asi/img4.png'];
-                  imagePath = asiImages[currentIndex] || asiImages[0];
-                } else if (imagePath.includes('project_cipha')) {
-                  // Map based on current index (0-2 for CipherPool project)
-                  const ciphaImages = ['/project_cipha/img5.png', '/project_cipha/img6.png', '/project_cipha/img7.png'];
-                  imagePath = ciphaImages[currentIndex] || ciphaImages[0];
-                }
-              }
-              
-              const finalPath = encodeImagePath(imagePath);
-              
-              return (
-                <img
-                  key={`${currentIndex}-${finalPath}`}
-                  src={finalPath}
-                  alt={`${projectTitle} ${currentIndex + 1}`}
-                  className="w-full h-full object-contain"
-                  loading="eager"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    // Show a placeholder instead of hiding
-                    target.style.display = 'block';
-                    target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300"%3E%3Crect fill="%23ddd" width="400" height="300"/%3E%3Ctext fill="%23999" font-family="sans-serif" font-size="18" x="50%25" y="50%25" text-anchor="middle" dy=".3em"%3EImage not found%3C/text%3E%3C/svg%3E';
-                  }}
-                />
-              );
-            })()}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    goToPrevious();
-                  }}
-                  className="p-2 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/30 transition-all"
-                >
-                  <FontAwesomeIcon icon={faChevronLeft} className="text-white" />
-                </button>
-                <span className="text-white text-sm font-semibold bg-black/40 px-3 py-1 rounded-full backdrop-blur-md">
-                  {currentIndex + 1} / {images.length}
-                </span>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    goToNext();
-                  }}
-                  className="p-2 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/30 transition-all"
-                >
-                  <FontAwesomeIcon icon={faChevronRight} className="text-white" />
-                </button>
-              </div>
-            </div>
+            <img
+              src={getImagePath(images[currentIndex])}
+              alt={`${projectTitle} screenshot ${currentIndex + 1}`}
+              className="w-full h-full object-contain"
+              style={{
+                filter: 'brightness(1.12) contrast(1.12)',
+                imageRendering: 'crisp-edges'
+              }}
+              loading="eager"
+            />
           </motion.div>
         </AnimatePresence>
-
+ 
+        {/* Navigation Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+          <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between pointer-events-auto">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                goToPrevious();
+              }}
+              className="p-3 bg-black/30 backdrop-blur-md rounded-full hover:bg-black/40 transition-all shadow-lg border border-white/15"
+              aria-label="Previous image"
+            >
+              <FontAwesomeIcon icon={faChevronLeft} className="text-white text-lg" />
+            </button>
+            <span className="text-white text-sm font-semibold bg-black/40 backdrop-blur-md px-4 py-2 rounded-full shadow-lg border border-white/15">
+              {currentIndex + 1} / {images.length}
+            </span>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                goToNext();
+              }}
+              className="p-3 bg-black/30 backdrop-blur-md rounded-full hover:bg-black/40 transition-all shadow-lg border border-white/15"
+              aria-label="Next image"
+            >
+              <FontAwesomeIcon icon={faChevronRight} className="text-white text-lg" />
+            </button>
+          </div>
+        </div>
+ 
         {/* Dots Indicator */}
         <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
           {images.map((_, index) => (
@@ -168,17 +123,17 @@ export default function ImageCarousel({ images, projectTitle }: ImageCarouselPro
                 e.stopPropagation();
                 goToSlide(index);
               }}
-              className={`w-2 h-2 rounded-full transition-all ${
+              className={`transition-all rounded-full ${
                 index === currentIndex
-                  ? 'bg-sky-400 w-6'
-                  : 'bg-white/40 hover:bg-white/60'
+                  ? 'bg-sky-500 w-6 h-2'
+                  : 'bg-white/55 w-2 h-2 hover:bg-white/75'
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>
       </div>
-
+ 
       {/* Fullscreen Modal */}
       <AnimatePresence>
         {isFullscreen && (
@@ -186,112 +141,102 @@ export default function ImageCarousel({ images, projectTitle }: ImageCarouselPro
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-md flex items-center justify-center p-4"
+            className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-xl flex items-center justify-center"
             onClick={() => setIsFullscreen(false)}
           >
+            {/* Close Button */}
+            <button
+              onClick={() => setIsFullscreen(false)}
+              className="fixed top-6 right-6 z-[10000] p-4 bg-black/20 backdrop-blur-md rounded-full hover:bg-black/30 transition-all shadow-xl border border-white/15"
+              aria-label="Close fullscreen"
+            >
+              <FontAwesomeIcon icon={faTimes} className="text-white text-2xl" />
+            </button>
+ 
             <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
+              initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              className="relative w-full max-w-6xl max-h-[90vh]"
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative w-full h-full flex items-center justify-center p-8"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close Button */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentIndex}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                  className="relative w-full h-full flex items-center justify-center"
+                >
+                  <img
+                    src={getImagePath(images[currentIndex])}
+                    alt={`${projectTitle} screenshot ${currentIndex + 1}`}
+                    className="max-w-full max-h-full object-contain"
+                    style={{
+                      filter: 'brightness(1.15) contrast(1.15)',
+                      imageRendering: 'crisp-edges',
+                      maxWidth: '90vw',
+                      maxHeight: '85vh'
+                    }}
+                    loading="eager"
+                  />
+                </motion.div>
+              </AnimatePresence>
+ 
+              {/* Navigation Buttons */}
               <button
-                onClick={() => setIsFullscreen(false)}
-                className="absolute top-4 right-4 z-50 p-3 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/30 transition-all text-white"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goToPrevious();
+                }}
+                className="fixed left-6 top-1/2 transform -translate-y-1/2 p-4 bg-black/20 backdrop-blur-md rounded-full hover:bg-black/30 transition-all shadow-xl border border-white/15 z-[10000]"
+                aria-label="Previous image"
               >
-                <FontAwesomeIcon icon={faTimes} className="text-xl" />
+                <FontAwesomeIcon icon={faChevronLeft} className="text-white text-2xl" />
               </button>
-
-              {/* Fullscreen Carousel */}
-              <div className="relative w-full h-[95vh] max-w-[95vw] rounded-xl overflow-hidden bg-white/5 border border-white/20">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={currentIndex}
-                    initial={false}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute inset-0 flex items-center justify-center"
-                  >
-                    {(() => {
-                      // Get the current image path and ensure it's correct
-                      let imagePath = images[currentIndex];
-                      
-                      // Runtime fix: If we detect old Screenshot path, try to map it to correct path
-                      if (imagePath && imagePath.includes('Screenshot')) {
-                        if (imagePath.includes('project_asi')) {
-                          // Map based on current index (0-3 for ASI project)
-                          const asiImages = ['/project_asi/img1.png', '/project_asi/img2.png', '/project_asi/img3.png', '/project_asi/img4.png'];
-                          imagePath = asiImages[currentIndex] || asiImages[0];
-                        } else if (imagePath.includes('project_cipha')) {
-                          // Map based on current index (0-2 for CipherPool project)
-                          const ciphaImages = ['/project_cipha/img5.png', '/project_cipha/img6.png', '/project_cipha/img7.png'];
-                          imagePath = ciphaImages[currentIndex] || ciphaImages[0];
-                        }
-                      }
-                      
-                      const finalPath = encodeImagePath(imagePath);
-                      
-                      return (
-                        <img
-                          key={`fullscreen-${currentIndex}-${finalPath}`}
-                          src={finalPath}
-                          alt={`${projectTitle} ${currentIndex + 1}`}
-                          className="max-w-full max-h-full w-auto h-auto object-contain"
-                          loading="eager"
-                          style={{ maxWidth: '95vw', maxHeight: '95vh' }}
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300"%3E%3Crect fill="%23ddd" width="400" height="300"/%3E%3Ctext fill="%23999" font-family="sans-serif" font-size="18" x="50%25" y="50%25" text-anchor="middle" dy=".3em"%3EImage not found%3C/text%3E%3C/svg%3E';
-                          }}
-                        />
-                      );
-                    })()}
-                  </motion.div>
-                </AnimatePresence>
-
-                {/* Navigation Buttons */}
-                <button
-                  onClick={goToPrevious}
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 p-4 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/30 transition-all text-white z-10"
-                >
-                  <FontAwesomeIcon icon={faChevronLeft} className="text-2xl" />
-                </button>
-                <button
-                  onClick={goToNext}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 p-4 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/30 transition-all text-white z-10"
-                >
-                  <FontAwesomeIcon icon={faChevronRight} className="text-2xl" />
-                </button>
-
-                {/* Image Counter */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm font-semibold">
+              
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goToNext();
+                }}
+                className="fixed right-6 top-1/2 transform -translate-y-1/2 p-4 bg-black/20 backdrop-blur-md rounded-full hover:bg-black/30 transition-all shadow-xl border border-white/15 z-[10000]"
+                aria-label="Next image"
+              >
+                <FontAwesomeIcon icon={faChevronRight} className="text-white text-2xl" />
+              </button>
+ 
+              {/* Image Counter */}
+              <div className="fixed bottom-24 left-1/2 transform -translate-x-1/2 bg-black/75 backdrop-blur-lg px-6 py-3 rounded-full shadow-xl border border-white/15 z-[10000]">
+                <span className="text-white text-base font-semibold">
                   {currentIndex + 1} / {images.length}
-                </div>
-
-                {/* Thumbnail Strip */}
-                <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex gap-2 max-w-full overflow-x-auto px-4">
-                  {images.map((img, index) => (
-                    <button
-                      key={index}
-                      onClick={() => goToSlide(index)}
-                      className={`flex-shrink-0 w-20 h-12 rounded-lg overflow-hidden border-2 transition-all ${
-                        index === currentIndex
-                          ? 'border-sky-400 scale-110'
-                          : 'border-white/30 hover:border-white/60'
-                      }`}
-                    >
-                      <img
-                        src={encodeImagePath(img)}
-                        alt={`Thumbnail ${index + 1}`}
-                        className="object-cover w-full h-full"
-                        loading="eager"
-                      />
-                    </button>
-                  ))}
-                </div>
+                </span>
+              </div>
+ 
+              {/* Thumbnail Strip */}
+              <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 flex gap-3 max-w-[90vw] overflow-x-auto px-4 py-2 bg-black/65 backdrop-blur-lg rounded-full shadow-xl border border-white/15 z-[10000]">
+                {images.map((img, index) => (
+                  <button
+                    key={index}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      goToSlide(index);
+                    }}
+                    className={`flex-shrink-0 w-24 h-16 rounded-lg overflow-hidden border-2 transition-all ${
+                      index === currentIndex
+                        ? 'border-sky-400 scale-110 shadow-lg'
+                        : 'border-white/45 hover:border-white/75 opacity-70 hover:opacity-100'
+                    }`}
+                  >
+                    <img
+                      src={getImagePath(img)}
+                      alt={`Thumbnail ${index + 1}`}
+                      className="object-cover w-full h-full"
+                      style={{ filter: 'brightness(1.08)' }}
+                    />
+                  </button>
+                ))}
               </div>
             </motion.div>
           </motion.div>
@@ -300,4 +245,3 @@ export default function ImageCarousel({ images, projectTitle }: ImageCarouselPro
     </>
   );
 }
-

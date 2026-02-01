@@ -230,7 +230,7 @@ export default function ProjectsBento() {
                   <h3 className="font-heading text-lg sm:text-xl md:text-[1.25rem] font-bold mb-4 bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
                     Stay Updated with New Projects
                   </h3>
-                  <p className="font-body text-sm sm:text-base text-gray-300 mb-6">
+                  <p className="font-body text-sm sm:text-base text-slate-700 mb-6">
                     Subscribe to get notified when I publish new projects and updates
                   </p>
                   <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
