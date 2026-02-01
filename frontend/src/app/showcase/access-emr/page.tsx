@@ -497,7 +497,7 @@ export default function AccessEMRShowcasePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
               <a
-                href="[Link to your GitHub Repo]"
+                href="https://github.com/accessphs/access-emr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-6 py-3 rounded-xl border-2 border-slate-300 bg-white text-slate-700 font-semibold shadow-md hover:shadow-lg hover:border-sky-400 hover:text-sky-700 transition-all"

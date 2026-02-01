@@ -76,7 +76,7 @@ export default function Navigation() {
           >
             <FontAwesomeIcon icon={faCode} className="text-sky-500" />
             <span className="hidden sm:inline">Portfolio</span>
-            <span className="sm:hidden">PF</span>
+            <span className="sm:hidden">Portfolio</span>
           </motion.a>
 
           {/* Desktop Menu */}
